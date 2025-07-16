@@ -1,0 +1,25 @@
+{
+  "name": "grav-cms-developer/seo-toolkit",
+  "type": "grav-plugin",
+  "description": "SeoToolkit",
+  "version": "1.0.0",
+  "keywords": ["plugin"],
+  "homepage": "https://github.com/grav-cms-developer/grav-plugin-seo-toolkit",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "GRAV CMS Developer",
+      "email": "hello@gravdeveloper.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grav\\Plugin\\SeoToolkit\\": "classes/"
+    },
+    "classmap":  ["seo-toolkit.php"]
+  }
+}

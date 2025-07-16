@@ -1,0 +1,151 @@
+name: Seo Toolkit
+slug: seo-toolkit
+type: plugin
+version: 0.1.0
+description: SeoToolkit
+icon: check-square
+
+author:
+  name: GRAV CMS Developer
+  email: hello@gravdeveloper.com
+
+homepage: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit
+demo: http://demo.yoursite.com
+bugs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/issues
+docs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/blob/develop/README.md
+keywords: grav, plugin, seo, toolkit
+license: MIT
+
+dependencies:
+  - { name: grav, version: ">=1.6.0" }
+
+form:
+  validation: loose
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        tab_seo:
+          type: tab
+          title: SEO
+          fields:
+            seo.title:
+              type: text
+              label: SEO Title
+              help: Custom title for search engines
+              attributes:
+                class: seo-title-field-global 
+            seo.description:
+              type: textarea
+              label: Meta Description
+              help: Short description shown in search engines
+              attributes:
+                class: seo-description-field-global 
+            seo.keyword:
+              type: text
+              label: Focus Keyword
+              help: Main keyword you want this page to rank for
+              attributes:
+                class: seo-focus-keyword-global
+
+        tab_schema:
+          type: tab
+          title: Schema
+          fields:
+            schema.site.name:
+              type: text
+              label: Site Name
+              help: Used in Organization and WebSite structured data.
+
+            schema.enabled:
+              type: toggle
+              label: Enable Global Schema
+              highlight: 1
+              default: 1
+              options:
+                1: Enabled
+                0: Disabled
+              validate:
+                type: bool
+
+            schema.site.json:
+              type: editor
+              label: Schema JSON
+              help: Put your Schema here in JSON-LD format.
+
+        tab_social:
+          type: tab
+          title: Social
+          fields:
+            social.og_title:
+              type: text
+              label: OpenGraph Title
+            social.og_description:
+              type: textarea
+              label: OpenGraph Description
+            social.og_image:
+              type: file
+              label: OpenGraph Image
+              multiple: false
+              destination: "user/data/ogimages"
+              accept:
+                - image/*
+
+        tab_advanced:
+          type: tab
+          title: Advanced
+          fields:
+            advanced.canonical:
+              type: text
+              label: Canonical URL
+              help: URL you want search engines to treat as canonical
+
+            advanced.robots:
+              type: select
+              label: Robots Meta Tag
+              default: 'index,follow'
+              help: 'Choose how search engines should treat this page.'
+              options:
+                'index,follow': 'index,follow (Default - allow indexing and crawling)'
+                'noindex,follow': 'noindex,follow (Prevent indexing, allow crawling)'
+                'noindex,nofollow': 'noindex,nofollow (Prevent indexing and crawling)'
+                'index,nofollow': 'index,nofollow (Allow indexing, block crawling)'
+
+            advanced.noindex:
+              type: toggle
+              label: Noindex Override
+              highlight: 0
+              default: 0
+              help: 'Force this page to not appear in search engine results regardless of Robots Meta setting.'
+              options:
+                1: Enabled
+                0: Disabled
+              validate:
+                type: bool
+
+        tab_sitemap:
+          type: tab
+          title: Sitemap
+          fields:
+            sitemap.enabled:
+              type: toggle
+              label: Enable Sitemap Generation
+              highlight: 1
+              default: 1
+              options:
+                1: Enabled
+                0: Disabled
+              validate:
+                type: bool
+            sitemap.include_hidden:
+              type: toggle
+              label: Include Hidden Pages
+              help: Should hidden or non-routable pages be included in the sitemap?
+              highlight: 0
+              default: 0
+              options:
+                1: Yes
+                0: No
+              validate:
+                type: bool
