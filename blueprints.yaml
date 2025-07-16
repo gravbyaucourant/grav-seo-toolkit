@@ -6,11 +6,12 @@ description: SeoToolkit
 icon: check-square
 
 author:
-  name: GRAV CMS Developer
+  name: Sarthak Gupta - GRAV Developer
   email: hello@gravdeveloper.com
 
 homepage: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit
 demo: http://demo.yoursite.com
+website: https://www.gravdeveloper.com
 bugs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/issues
 docs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/blob/develop/README.md
 keywords: grav, plugin, seo, toolkit
@@ -35,13 +36,13 @@ form:
               label: SEO Title
               help: Custom title for search engines
               attributes:
-                class: seo-title-field-global 
+                class: seo-title-field-global
             seo.description:
               type: textarea
               label: Meta Description
               help: Short description shown in search engines
               attributes:
-                class: seo-description-field-global 
+                class: seo-description-field-global
             seo.keyword:
               type: text
               label: Focus Keyword
@@ -104,20 +105,20 @@ form:
             advanced.robots:
               type: select
               label: Robots Meta Tag
-              default: 'index,follow'
-              help: 'Choose how search engines should treat this page.'
+              default: "index,follow"
+              help: "Choose how search engines should treat this page."
               options:
-                'index,follow': 'index,follow (Default - allow indexing and crawling)'
-                'noindex,follow': 'noindex,follow (Prevent indexing, allow crawling)'
-                'noindex,nofollow': 'noindex,nofollow (Prevent indexing and crawling)'
-                'index,nofollow': 'index,nofollow (Allow indexing, block crawling)'
+                "index,follow": "index,follow (Default - allow indexing and crawling)"
+                "noindex,follow": "noindex,follow (Prevent indexing, allow crawling)"
+                "noindex,nofollow": "noindex,nofollow (Prevent indexing and crawling)"
+                "index,nofollow": "index,nofollow (Allow indexing, block crawling)"
 
             advanced.noindex:
               type: toggle
               label: Noindex Override
               highlight: 0
               default: 0
-              help: 'Force this page to not appear in search engine results regardless of Robots Meta setting.'
+              help: "Force this page to not appear in search engine results regardless of Robots Meta setting."
               options:
                 1: Enabled
                 0: Disabled
