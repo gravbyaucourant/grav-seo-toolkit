@@ -71,6 +71,7 @@ class SeoToolkitClass
     }
     public function generateSitemapXml(): string
     {
+        // $this->grav['log']->info('SEO Toolkit: generateSitemapXml() called');
         $config = $this->config->get('plugins.seo-toolkit.sitemap') ?? [];
 
         if (empty($config['enabled']) || !$config['enabled']) {
@@ -123,7 +124,7 @@ XML;
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 XML;
         $sitemapXml .= PHP_EOL . implode(PHP_EOL, $items) . PHP_EOL . '</urlset>';
-
+        $this->grav['log']->info($sitemapXml);
         return $sitemapXml;
     }
     public function pingGoogleSitemap(): void

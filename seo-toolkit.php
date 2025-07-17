@@ -53,6 +53,7 @@ class SeoToolkitPlugin extends Plugin
             ]);
         }
     }
+
     public function onAdminMenu(): void
     {
         $this->grav['twig']->plugins_hooked_nav['SEO Toolkit'] = [
@@ -256,7 +257,29 @@ class SeoToolkitPlugin extends Plugin
      * -----------------------------------------------------------*/
     public function onPageInitialized(): void
     {
-        /* keep your sitemap early‑return block here … */
+        $uri = $this->grav['uri'];
+        $path = ltrim($uri->path(), '/');
+        $ext = $uri->extension();
+
+        $this->grav['log']->info('SEO Toolkit: onPageInitialized for path: "' . $path . '", extension: "' . $ext . '"');
+
+        if ($path === 'sitemap' && $ext === 'xml') {
+            // $this->grav['log']->info('SEO Toolkit: Processing sitemap.xml request');
+
+            $sitemap = $this->seotoolkit->generateSitemapXml();
+
+            if ($sitemap) {
+                header('Content-Type: application/xml; charset=UTF-8');
+                echo $sitemap;
+                exit;
+            } else {
+                // $this->grav['log']->error('SEO Toolkit: Failed to generate sitemap XML');
+                header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+                exit;
+            }
+        }
+
+
 
         /* ---------- 1. Grab configs & page headers -------------- */
         $page = $this->grav['page'];
