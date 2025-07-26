@@ -9,12 +9,11 @@ author:
   name: Sarthak Gupta - GRAV Developer
   email: hello@gravdeveloper.com
 
-homepage: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit
-demo: http://demo.yoursite.com
+homepage: https://github.com/dev-gravcms/grav-seo-toolkit
 website: https://www.gravdeveloper.com
-bugs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/issues
-docs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/blob/develop/README.md
-keywords: grav, plugin, seo, toolkit
+bugs: https://github.com/dev-gravcms/grav-seo-toolkit/issues
+docs: https://github.com/dev-gravcms/grav-seo-toolkit/README.md
+keywords: grav, grav cms, plugin, seo, toolkit
 license: MIT
 
 dependencies:
