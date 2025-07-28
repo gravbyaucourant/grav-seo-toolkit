@@ -29,8 +29,8 @@ form:
       label: false
       content: |
         ## Global SEO Settings
-        Configure default SEO, Schema, Open Graph Settings, and Sitemap options here.  
-        These settings will apply globally unless overridden on individual pages.
+        Configure default SEO, Schema, Sitemap and Open Graph Settings here.  
+        These settings apply globally on all pages unless overridden on an individual page.
     tabs:
       type: tabs
       active: 1
@@ -45,19 +45,19 @@ form:
               label: false
               content: |
                 ### SEO Settings
+                Specify a default SEO title and meta description for your website.
                 These settings are used for all pages that do not have their own metadata.  
-                You can override them for each page.
             seo.title:
               type: text
               label: SEO Title
-              help: A default title that will be applied to all page titles. If left empty, the page title will be automatically generated based on this global title.
+              help: Global Page title - Will be used as the default title for all pages unless overridden.
               attributes:
                 class: seo-title-field-global
 
             seo.description:
               type: textarea
               label: Meta Description
-              help: A default Meta Description that will be applied to all page Meta Descriptions. If left empty, the page Meta Description will be automatically generated based on this global Meta Description.
+              help: Global Page meta description - Will be used as the default meta description for all pages unless overridden.
               attributes:
                 class: seo-description-field-global
             # seo.keyword:
@@ -78,7 +78,7 @@ form:
               content: |
                 ### Schema Settings  
                 Manage structured data (Schema.org) configurations that help search engines better understand your website.  
-                These global schema settings will be applied site-wide unless overridden on specific pages.
+                This global schema will be applied site-wide on all pages. In case you want specific schema for a page, you can add it in the seo settings of the page.
             # schema.site.name:
             #   type: text
             #   label: Site Name
@@ -87,7 +87,7 @@ form:
             schema.enabled:
               type: toggle
               label: Enable Global Schema
-              help: Enable or disable global schema settings. This will apply site-wide unless overridden on specific pages.
+              help: Enable or disable global schema on your website. If disabled, no schema will be added to the pages.
               highlight: 1
               default: 1
               options:
