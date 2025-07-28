@@ -96,19 +96,20 @@ class SeoToolkitPlugin extends Plugin
                                     'seo_settings' => [
                                         'type' => 'section',
                                         'title' => 'SEO Settings',
-                                        'underline' => true
+                                        'text' => 'Configure page-specific SEO options such as custom titles, meta descriptions, and focus keywords. These settings override the global SEO settings defined in the plugin configuration.',
+                                        'underline' => true,
                                     ],
                                     'header.seo.title' => [
                                         'type' => 'text',
                                         'label' => 'SEO Title',
-                                        'help' => 'Recommended: 50‑70 characters',
+                                        'help' => 'Set a custom title for this page to be displayed in search engine results. Keep it concise, relevant, and include your target keyword.',
                                         'class' => 'seo-title-field',
                                         'validate' => ['type' => 'string', 'max' => 70]
                                     ],
                                     'header.seo.description' => [
                                         'type' => 'textarea',
                                         'label' => 'Meta Description',
-                                        'help' => 'Recommended: 150‑160 characters',
+                                        'help' => 'Provide a brief summary of this page’s content for search engines. A compelling description can improve click-through rates in search results.',
                                         'class' => 'seo-description-field',
                                         'validate' => ['type' => 'string', 'max' => 320]
                                     ],
@@ -116,7 +117,7 @@ class SeoToolkitPlugin extends Plugin
                                         'type' => 'text',
                                         'label' => 'Focus Keyword',
                                         'class' => 'seo-focus-keyword',
-                                        'help' => 'Primary keyword for this page'
+                                        'help' => 'Enter the primary keyword or phrase you want this page to rank for. This helps guide optimization efforts.'
                                     ],
 
                                     /* ▸ NEW – placeholder the JS will hide & replace */
@@ -126,7 +127,7 @@ class SeoToolkitPlugin extends Plugin
                                         'rows' => 3,
                                         'class' => 'seo-snippet-textarea',
                                         'markdown' => false,
-                                        'help' => 'Google‑style preview (updates live below).',
+                                        'help' => 'Preview how this page might appear in search engine results, including the title, URL, and meta description. Use it to ensure your SEO elements are well-optimized.',
                                         'attributes' => [
                                             'readonly' => true           // user can’t edit, JS hides it anyway
                                         ],
@@ -137,21 +138,24 @@ class SeoToolkitPlugin extends Plugin
                                     'og_settings' => [
                                         'type' => 'section',
                                         'title' => 'Open Graph Settings',
+                                        'text' => 'Define page-specific Open Graph metadata such as title, description, and image. These settings control how this page appears when shared on social media and override any global Open Graph defaults.',
                                         'underline' => true
                                     ],
                                     'header.og.title' => [
                                         'type' => 'text',
-                                        'label' => 'OG Title'
+                                        'label' => 'Open Graph Title',
+                                        'help' => 'Specify the Open Graph title that will appear when this page is shared on social media platforms. If left empty, the SEO Title will be used.',
                                     ],
                                     'header.og.description' => [
                                         'type' => 'textarea',
-                                        'label' => 'OG Description'
+                                        'label' => 'Open Graph Description',
+                                        'help' => 'Provide a short, engaging description that will display under the title in social media previews. This should encourage users to click and share.',
                                     ],
                                     'header.og.type' => [
                                         'type' => 'select',
-                                        'label' => 'OG Type',
+                                        'label' => 'Open Graph Type',
                                         'default' => 'article',
-                                        'help' => 'Select or enter a custom Open Graph object type. Example: article, website, product, video.movie, etc.',
+                                        'help' => 'Define the type of content for Open Graph metadata (e.g., website, article, video). This helps social platforms understand and display your content correctly.',
                                         'options' => [
                                             'article' => 'Article',
                                             'website' => 'Website',
@@ -177,54 +181,65 @@ class SeoToolkitPlugin extends Plugin
                                     ],
                                     'header.og.image' => [
                                         'type' => 'file',
-                                        'label' => 'OG Image',
+                                        'label' => 'Open Graph Image',
+                                        'help' => 'Upload or select an image to be shown as a thumbnail when the page is shared on social media. For best results, use a high-resolution image with recommended dimensions (1200x630 pixels).',
                                         'destination' => 'self@',
                                         'accept' => ['image/*'],
                                         'multiple' => false
                                     ],
 
 
-                                    /** 3. ADVANCED fieldset */
+                                    /** 3. Robots & Canonical fieldset */
                                     'adv_settings' => [
                                         'type' => 'section',
-                                        'title' => 'Advanced',
-                                        'underline' => true
+                                        'title' => 'Robots & Canonical',
+                                        'underline' => true,
+                                        'text' => 'Configure advanced SEO options such as canonical URLs, robots directives, structured data, and sitemap preferences. These settings give you fine-grained control over how search engines interpret and index this page.',
                                     ],
+
                                     'header.seo.canonical' => [
                                         'type' => 'url',
-                                        'label' => 'Canonical URL'
+                                        'label' => 'Canonical URL',
+                                        'help' => 'Specify the preferred URL for this page to avoid duplicate content issues and guide search engines to the primary version.',
                                     ],
+
                                     'header.seo.robots.index' => [
                                         'type' => 'toggle',
                                         'label' => 'Robots: Index',
                                         'highlight' => 1,
                                         'options' => [1 => 'Index', 0 => 'Noindex'],
-                                        'help' => 'Whether search engines may index this page.',
-                                        'default' => 1
+                                        'help' => 'Control whether search engines are allowed to index this page in their search results.',
+                                        'default' => 1,
                                     ],
+
                                     'header.seo.robots.follow' => [
                                         'type' => 'toggle',
                                         'label' => 'Robots: Follow',
                                         'highlight' => 1,
                                         'options' => [1 => 'Follow', 0 => 'Nofollow'],
-                                        'help' => 'Whether search engines may Follow this page.',
-                                        'default' => 1
+                                        'help' => 'Determine whether search engines should follow links on this page to discover other content.',
+                                        'default' => 1,
                                     ],
+
                                     'header.seo.schema_editor' => [
                                         'type' => 'textarea',
-                                        'label' => 'Page Schema (JSON‑LD)',
+                                        'label' => 'Page Schema (JSON‑LD)',
                                         'rows' => 10,
-                                        'attributes' => ['class' => 'schema-editor']
+                                        'attributes' => ['class' => 'schema-editor'],
+                                        'help' => 'Insert custom JSON-LD structured data for this page to provide additional context to search engines. This will override any automatically generated schema.',
                                     ],
+
                                     'header.sitemap.include' => [
                                         'type' => 'toggle',
-                                        'label' => 'Include in Sitemap',
+                                        'label' => 'Include in Sitemap',
                                         'options' => [1 => 'Yes', 0 => 'No'],
-                                        'default' => 1
+                                        'default' => 1,
+                                        'help' => 'Choose whether this page should be included in the generated sitemap.xml file.',
                                     ],
+
                                     'header.sitemap.changefreq' => [
                                         'type' => 'select',
-                                        'label' => 'Change Frequency',
+                                        'label' => 'Change Frequency',
                                         'default' => 'weekly',
                                         'options' => [
                                             'always' => 'Always',
@@ -233,15 +248,19 @@ class SeoToolkitPlugin extends Plugin
                                             'weekly' => 'Weekly',
                                             'monthly' => 'Monthly',
                                             'yearly' => 'Yearly',
-                                            'never' => 'Never'
-                                        ]
+                                            'never' => 'Never',
+                                        ],
+                                        'help' => 'Suggest how frequently the content on this page is likely to change. Search engines may use this as a hint when crawling.',
                                     ],
+
                                     'header.sitemap.priority' => [
                                         'type' => 'text',
-                                        'label' => 'Priority (0.0 – 1.0)',
+                                        'label' => 'Priority (0.0 – 1.0)',
                                         'default' => '0.5',
-                                        'validate' => ['type' => 'float', 'min' => 0, 'max' => 1]
+                                        'validate' => ['type' => 'float', 'min' => 0, 'max' => 1],
+                                        'help' => 'Set the priority of this page relative to other pages on your site (0.0 being the lowest and 1.0 the highest).',
                                     ],
+
                                 ]
                             ]
 

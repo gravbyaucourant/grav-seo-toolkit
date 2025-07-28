@@ -23,6 +23,14 @@ dependencies:
 form:
   validation: loose
   fields:
+    seo_global_heading:
+      type: display
+      markdown: true
+      label: false
+      content: |
+        ## Global SEO Settings
+        Configure default SEO, Schema, Open Graph Settings, and Sitemap options here.  
+        These settings will apply globally unless overridden on individual pages.
     tabs:
       type: tabs
       active: 1
@@ -31,37 +39,55 @@ form:
           type: tab
           title: SEO
           fields:
+            seo_heading:
+              type: display
+              markdown: true
+              label: false
+              content: |
+                ### SEO Settings
+                These settings are used for all pages that do not have their own metadata.  
+                You can override them for each page.
             seo.title:
               type: text
               label: SEO Title
-              help: Custom title for search engines
+              help: A default title that will be applied to all page titles. If left empty, the page title will be automatically generated based on this global title.
               attributes:
                 class: seo-title-field-global
+
             seo.description:
               type: textarea
               label: Meta Description
-              help: Short description shown in search engines
+              help: A default Meta Description that will be applied to all page Meta Descriptions. If left empty, the page Meta Description will be automatically generated based on this global Meta Description.
               attributes:
                 class: seo-description-field-global
-            seo.keyword:
-              type: text
-              label: Focus Keyword
-              help: Main keyword you want this page to rank for
-              attributes:
-                class: seo-focus-keyword-global
+            # seo.keyword:
+            #   type: text
+            #   label: Focus Keyword
+            #   help: Main keyword you want this page to rank for
+            #   attributes:
+            #     class: seo-focus-keyword-global
 
         tab_schema:
           type: tab
           title: Schema
           fields:
-            schema.site.name:
-              type: text
-              label: Site Name
-              help: Used in Organization and WebSite structured data.
+            schema_heading:
+              type: display
+              markdown: true
+              label: false
+              content: |
+                ### Schema Settings  
+                Manage structured data (Schema.org) configurations that help search engines better understand your website.  
+                These global schema settings will be applied site-wide unless overridden on specific pages.
+            # schema.site.name:
+            #   type: text
+            #   label: Site Name
+            #   help: Used in Organization and WebSite structured data.
 
             schema.enabled:
               type: toggle
               label: Enable Global Schema
+              help: Enable or disable global schema settings. This will apply site-wide unless overridden on specific pages.
               highlight: 1
               default: 1
               options:
@@ -70,24 +96,45 @@ form:
               validate:
                 type: bool
 
+            schema_edito_heading:
+              type: display
+              markdown: true
+              label: false
+              content: | 
+                #### Put your Site JSON here in JSON-LD format for global schema.
+
             schema.site.json:
               type: editor
               label: Schema JSON
-              help: Put your Schema here in JSON-LD format.
+              # help: Put your Site JSON here in JSON-LD format for global schema.
 
         tab_social:
           type: tab
-          title: Social
+          title: Open Graph
           fields:
+            open_graph_heading:
+              type: display
+              markdown: true
+              label: false
+              content: |
+                ### Open Graph Settings  
+                Configure default Open Graph metadata to control how your website content appears when shared on social media platforms.  
+                These settings help ensure consistent titles, descriptions, and images across all shared links unless customized for individual pages.
+
             social.og_title:
               type: text
               label: OpenGraph Title
+              help: Specify the default title that will appear when your pages are shared on social media platforms. If not set, the page title will be used.
+
             social.og_description:
               type: textarea
               label: OpenGraph Description
+              help: Provide a short description that will display under the title when the page is shared. This should summarize the content and encourage clicks.
+
             social.og_image:
               type: file
               label: OpenGraph Image
+              help: Upload a default image that will be shown as a preview thumbnail when your pages are shared on social media. Recommended size "1200x630 pixels".
               multiple: false
               destination: "user/data/ogimages"
               accept:
@@ -95,18 +142,26 @@ form:
 
         tab_advanced:
           type: tab
-          title: Advanced
+          title: Robots & Canonical
           fields:
+            advanced_heading:
+              type: display
+              markdown: true
+              label: false
+              content: |
+                ### Robots & Canonical Settings  
+                Control how search engines crawl and index your pages using Robots meta directives and Canonical URLs.  
+                These global settings help prevent duplicate content issues and guide search engines toward the preferred version of your pages.
             advanced.canonical:
               type: text
               label: Canonical URL
-              help: URL you want search engines to treat as canonical
+              help: Specify the preferred URL that search engines should consider as the original version of the page. Useful for avoiding duplicate content issues.
 
             advanced.robots:
               type: select
               label: Robots Meta Tag
               default: "index,follow"
-              help: "Choose how search engines should treat this page."
+              help: Choose how search engines should treat your pages—whether to index them and follow links or restrict crawling and indexing as needed.
               options:
                 "index,follow": "index,follow (Default - allow indexing and crawling)"
                 "noindex,follow": "noindex,follow (Prevent indexing, allow crawling)"
@@ -118,7 +173,7 @@ form:
               label: Noindex Override
               highlight: 0
               default: 0
-              help: "Force this page to not appear in search engine results regardless of Robots Meta setting."
+              help: Enable this option to force search engines not to index the page, regardless of the Robots Meta Tag setting.
               options:
                 1: Enabled
                 0: Disabled
@@ -129,9 +184,18 @@ form:
           type: tab
           title: Sitemap
           fields:
+            sitemap_heading:
+              type: display
+              markdown: true
+              label: false
+              content: |
+                ### Sitemap Settings  
+                Manage global sitemap generation to help search engines discover and index your website pages efficiently.  
+                These settings allow you to control whether a sitemap is created and if hidden or non-routable pages should be included.
             sitemap.enabled:
               type: toggle
               label: Enable Sitemap Generation
+              help: Toggle this option to enable or disable automatic generation of the sitemap.xml file for your website. A sitemap helps search engines crawl and index your pages more effectively.
               highlight: 1
               default: 1
               options:
@@ -142,7 +206,7 @@ form:
             sitemap.include_hidden:
               type: toggle
               label: Include Hidden Pages
-              help: Should hidden or non-routable pages be included in the sitemap?
+              help: Decide whether to include hidden or non-routable pages in the sitemap. Including them may expose private or non-public pages to search engines.
               highlight: 0
               default: 0
               options:
