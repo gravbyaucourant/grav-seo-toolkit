@@ -30,7 +30,7 @@ class SeoToolkitPlugin extends Plugin
             return;
         }
 
-        // ✅ Auto-generate robots.txt when plugin is enabled
+        // Auto-generate robots.txt when plugin is enabled
         $this->seotoolkit->generateRobotsTxt(
             [
                 'User-agent' => '*',
