@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.0 (2025-07-15)
+## v1.0.1 (2025-07-30)
 - NEW: Added SEO meta fields (title, description, focus keyword) in admin panel.
 - NEW: Auto-generated robots.txt with sitemap integration.
 - NEW: Sitemap XML generation with customizable options (change frequency, priority).
