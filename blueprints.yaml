@@ -9,10 +9,9 @@ author:
   name: GRAV CMS Developer
   email: hello@gravdeveloper.com
 
-homepage: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit
-demo: http://demo.yoursite.com
-bugs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/issues
-docs: https://github.com/grav-cms-developer/grav-plugin-seo-toolkit/blob/develop/README.md
+homepage: https://github.com/gravbyaucourant/grav-plugin-seo-toolkit
+bugs: https://github.com/gravbyaucourant/grav-plugin-seo-toolkit/issues
+docs: https://github.com/gravbyaucourant/grav-plugin-seo-toolkit/blob/develop/README.md
 keywords: grav, plugin, seo, toolkit
 license: MIT
 
