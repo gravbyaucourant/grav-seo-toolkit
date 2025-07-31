@@ -46,9 +46,3 @@ The **SeoToolkit** plugin is a powerful, all-in-one SEO solution for [Grav CMS](
 ## Installation
 
 The SeoToolkit plugin can be installed in three ways: using the Grav Package Manager (GPM), manually via a ZIP file, or through the Grav Admin Plugin.
-
-### GPM Installation (Preferred)
-1. Navigate to the root of your Grav installation in your terminal.
-2. Run the following command:
-   ```bash
-   bin/gpm install seotoolkit
