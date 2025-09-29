@@ -3,7 +3,7 @@ namespace Grav\Plugin;
 
 use Composer\Autoload\ClassLoader;
 use Grav\Common\Plugin;
-use Grav\Plugin\SeoToolkit\SeoToolkitClass;
+use Grav\Plugin\SeoToolkit\seotoolkitclass;
 use RocketTheme\Toolbox\Event\Event;
 use Grav\Common\Data\Blueprint;
 
@@ -24,7 +24,7 @@ class SeoToolkitPlugin extends Plugin
     public function onPluginsInitialized(): void
     {
         // Initialize SeoToolkitClass
-        $this->seotoolkit = new SeoToolkitClass($this->grav, $this->config);
+        $this->seotoolkit = new seotoolkitclass($this->grav, $this->config);
 
         if (!$this->config->get('plugins.seo-toolkit.enabled')) {
             return;

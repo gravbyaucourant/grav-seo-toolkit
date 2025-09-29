@@ -3,7 +3,7 @@ namespace Grav\Plugin\SeoToolkit;
 use Grav\Common\Config\Config;
 use Grav\Common\Page\Page;
 
-class SeoToolkitClass
+class seotoolkitclass
 {
     protected $grav;
     protected $config;
